@@ -1,0 +1,33 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; border-radius: 8px; }
+input, textarea, select, button { font: inherit; }
+.border { border: 1px solid #e5e7eb; }
+.border-b { border-bottom: 1px solid #e5e7eb; }
+.border-t { border-top: 1px solid #e5e7eb; }
+.rounded { border-radius: 8px; }
+.p-2 { padding: 0.5rem; } .p-3 { padding: 0.75rem; } .p-4 { padding: 1rem; } .p-6 { padding: 1.5rem; }
+.mr-2 { margin-right: 0.5rem; } .mb-2 { margin-bottom: 0.5rem; } .mb-4 { margin-bottom: 1rem; } .mb-6 { margin-bottom: 1.5rem; }
+.mt-2 { margin-top: 0.5rem; } .mt-4 { margin-top: 1rem; }
+.text-sm { font-size: 0.875rem; } .text-lg { font-size: 1.125rem; } .text-xl { font-size: 1.25rem; }
+.font-semibold { font-weight: 600; }
+.opacity-70 { opacity: .7; } .hover\:opacity-100:hover { opacity: 1; }
+.max-w-5xl { max-width: 64rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; } .py-3 { padding-top: .75rem; padding-bottom: .75rem; } .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; } .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.flex { display: flex; } .flex-col { flex-direction: column; } .items-center { align-items: center; } .gap-4 { gap: 1rem; }
+.min-h-screen { min-height: 100vh; }
+.bg-white { background: #fff; } .text-stone-900 { color: #0c0a09; }
+.container { max-width: 64rem; margin: 0 auto; padding: 0 1rem; }
+.button { background: #111827; color: white; padding: 0.5rem 0.75rem; border-radius: 6px; border: none; cursor: pointer; }
+.button.secondary { background: #374151; }
+.button:disabled { opacity: 0.6; cursor: not-allowed; }
+.label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+.input, .textarea, .select { width: 100%; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; }
+.card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem; }
+.grid { display: grid; gap: 1rem; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
