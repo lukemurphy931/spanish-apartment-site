@@ -17,7 +17,7 @@ export async function PageRenderer({
   }
   return (
     <div className="grid" style={{ gap: '1.25rem' }}>
-      <div className="card card--flat">
+      <div className={`card card--flat card--${slug}`}>
         <h1>{page.title}</h1>
         <ReactMarkdown
           components={

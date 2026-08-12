@@ -98,7 +98,8 @@ h1, h2, h3 { font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; }
 .card ul, .card ol { margin: 0 0 1.1rem; padding-left: 1.4rem; }
 .card li { margin-bottom: 0.4rem; }
 .card li:last-child { margin-bottom: 0; }
-.card__actions { margin-top: 1.5rem; }
+.card__actions { margin-top: 0.65rem; }
+.card--home h2:last-of-type { margin-top: 3.25rem; }
 .card img {
   display: block;
   margin: 1rem auto 1.4rem;
