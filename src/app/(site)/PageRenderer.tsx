@@ -5,10 +5,12 @@ import { ImageToggle } from '@/components/ImageToggle';
 export async function PageRenderer({
   slug,
   actions,
+  notice,
   collapsibleImages = false,
 }: {
   slug: string;
   actions?: React.ReactNode;
+  notice?: React.ReactNode;
   collapsibleImages?: boolean;
 }) {
   const page = await prisma.page.findUnique({ where: { slug }, include: { images: { orderBy: { sort: 'asc' } } } });
@@ -18,6 +20,7 @@ export async function PageRenderer({
   return (
     <div className="grid" style={{ gap: '1.25rem' }}>
       <div className={`card card--flat card--${slug}`}>
+        {notice && <div className="card__notice">{notice}</div>}
         <h1>{page.title}</h1>
         <ReactMarkdown
           components={
