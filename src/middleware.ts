@@ -1,29 +1,30 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const ADMIN_PATHS = ['/admin', '/api/page', '/api/image', '/api/event'];
-
 export function middleware(req: NextRequest) {
-  const url = req.nextUrl;
-  const isAdminReq = ADMIN_PATHS.some((p) => url.pathname.startsWith(p));
-  const method = req.method.toUpperCase();
-  const needsAuth =
-    isAdminReq && (url.pathname.startsWith('/admin') || ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method));
+  const token = req.cookies.get('admin_token')?.value;
+  const path = req.nextUrl.pathname;
 
-  if (needsAuth) {
-    const adminCookie = req.cookies.get('admin')?.value;
-    if (adminCookie !== '1') {
-      if (url.pathname.startsWith('/admin')) {
-        const loginUrl = new URL('/admin/login', req.url);
-        loginUrl.searchParams.set('next', url.pathname);
-        return NextResponse.redirect(loginUrl);
-      }
-      return new NextResponse('Unauthorized', { status: 401 });
-    }
+  const isAdminPath = path.startsWith('/admin');
+  const isLoginPath = path === '/admin/login';
+
+  // If user is not logged in and trying to access an admin page (not the login page), redirect to login
+  if (isAdminPath && !isLoginPath && !token) {
+    const loginUrl = req.nextUrl.clone();
+    loginUrl.pathname = '/admin/login';
+    return NextResponse.redirect(loginUrl);
   }
+
+  // If user is logged in and tries to go to login, redirect them to admin home
+  if (isLoginPath && token) {
+    const adminUrl = req.nextUrl.clone();
+    adminUrl.pathname = '/admin';
+    return NextResponse.redirect(adminUrl);
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/api/:path*'],
+  matcher: ['/admin/:path*'],
 };
